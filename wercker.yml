@@ -7,5 +7,11 @@ build:
       env:
         MYSQL_ROOT_PASSWORD: foobar
   steps:
-    - install-packages:
-        packages: rsync curl
+    - script:
+      code: | 
+        echo $WERCKER_GIT_COMMIT
+test:
+  steps:
+    - script:
+      code: | 
+        echo $WERCKER_GIT_COMMIT
