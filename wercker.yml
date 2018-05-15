@@ -10,8 +10,12 @@ build:
         disable-sync: true
         repository: mark
         tag: $WERCKER_GIT_COMMIT
+        username: $QUAY_USERNAME
+        password: $QUAY_PASSWORD
+        email: $QUAY_EMAIL
+        repository: quay.io/markxnelson/mark
 test:
-  box: mark:$WERCKER_GIT_COMMIT
+  box: quay.io/markxnelson/mark:$WERCKER_GIT_COMMIT
   steps:
     - script:
       code: | 
