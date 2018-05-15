@@ -1,0 +1,11 @@
+box: ruby:2.3
+no-response-timeout: 60
+
+build:
+  services:
+    - id: mysql:5.6
+      env:
+        MYSQL_ROOT_PASSWORD: foobar
+  steps:
+    - install-packages:
+        packages: rsync curl
