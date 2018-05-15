@@ -1,16 +1,17 @@
-box: ruby:2.3 
+box: ubuntu 
 no-response-timeout: 60
 
 build:
-  services:
-    - id: mysql:5.6
-      env:
-        MYSQL_ROOT_PASSWORD: foobar
   steps:
     - script:
       code: | 
         echo $WERCKER_GIT_COMMIT
+    - internal/docker-push:
+        disable-sync: true
+        repository: mark
+        tag: $WERCKER_GIT_COMMIT
 test:
+  box: mark:$WERCKER_GIT_COMMIT
   steps:
     - script:
       code: | 
